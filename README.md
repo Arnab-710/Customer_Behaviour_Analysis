@@ -1,140 +1,230 @@
-🛍️ Customer Shopping Behavior Analysis
-📘 Overview
+🛒 Customer Shopping Behavior Analysis – Retail Insights
 
-This project analyzes customer shopping patterns to help a retail company improve sales, satisfaction, and loyalty. It combines Python (EDA & cleaning), SQL (query-based insights), and Power BI (visual storytelling) to identify what drives purchases, repeat customers, and overall revenue growth.
+Analyzing customer purchase patterns, loyalty, and profitability to drive data-driven marketing and sales strategies using Python, SQL, and Power BI.
 
-📊 Dataset
+📌 Table of Contents
 
-Source: Company’s transactional dataset
+<a href="#overview">Overview</a>
 
-Records: 3,900 rows
+<a href="#business-problem">Business Problem</a>
 
-Features: 18 columns covering demographics, purchase behavior, and sales data
+<a href="#dataset">Dataset</a>
+
+<a href="#tools--technologies">Tools & Technologies</a>
+
+<a href="#project-structure">Project Structure</a>
+
+<a href="#data-cleaning--preparation">Data Cleaning & Preparation</a>
+
+<a href="#exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</a>
+
+<a href="#sql-analysis">SQL Analysis</a>
+
+<a href="#dashboard">Dashboard</a>
+
+<a href="#how-to-run-this-project">How to Run This Project</a>
+
+<a href="#business-insights--recommendations">Business Insights & Recommendations</a>
+
+<a href="#author--contact">Author & Contact</a>
+
+<h2><a class="anchor" id="overview"></a>Overview</h2>
+
+This project explores consumer shopping behavior using transactional data from a retail company.
+The analysis identifies key factors influencing sales, loyalty, and repeat purchases — helping the company design better marketing, pricing, and retention strategies.
+It integrates Python (EDA + cleaning), SQL (data analysis), and Power BI (dashboard) for end-to-end insight generation.
+
+<h2><a class="anchor" id="business-problem"></a>Business Problem</h2>
+
+Retail management has noticed shifting purchasing trends across demographics and channels.
+The core business challenge is:
+
+“How can we leverage customer data to identify trends, improve engagement, and optimize product and marketing strategies?”
+
+This project focuses on:
+
+Understanding spending patterns and loyalty behavior
+
+Analyzing the impact of discounts and subscriptions
+
+Identifying high-value customer segments
+
+Evaluating top-performing products and channels
+
+<h2><a class="anchor" id="dataset"></a>Dataset</h2>
+
+Source: Customer transaction records (3,900 purchases)
+
+Rows: 3,900
+
+Columns: 18
+
+Key Attributes:
 
 Demographics: age, gender, location, subscription_status
 
-Purchase info: item_purchased, category, purchase_amount, season, size, color
+Purchase Data: item_purchased, category, purchase_amount, season, size, color
 
-Behavioral: discount_applied, previous_purchases, review_rating, shipping_type
+Behavior: discount_applied, promo_code_used, previous_purchases, review_rating, shipping_type
 
-Missing Data: 37 null values in review_rating, handled using median imputation.
+Missing Data: 37 null values in review_rating handled via median imputation
 
-🧰 Tools & Technologies
-Category	Tool / Technology
-Programming	Python (Pandas, NumPy, Matplotlib, Seaborn)
-Database	PostgreSQL / MySQL / SQL Server
-Visualization	Power BI
-Reporting	Gamma App
-Documentation	Jupyter Notebook, Markdown, PDF, PPT
-⚙️ Steps Followed
-1. Data Loading & Exploration (Python)
+<h2><a class="anchor" id="tools--technologies"></a>Tools & Technologies</h2>
 
-Imported dataset with pandas
+Python: Pandas, NumPy, Matplotlib, Seaborn
 
-Checked structure with df.info() and df.describe()
+SQL: PostgreSQL / MySQL / SQL Server
 
-Identified and handled missing values in review_rating
+Visualization: Power BI
 
-Renamed columns to snake_case for consistency
+Presentation: Gamma App
 
-2. Data Cleaning & Feature Engineering
+Documentation: Jupyter Notebook, Markdown
 
-Created age_group bins from customer ages
+<h2><a class="anchor" id="project-structure"></a>Project Structure</h2>
+customer-shopping-behavior-analysis/
+│
+├── README.md
+├── .gitignore
+├── requirements.txt
+│
+├── notebooks/
+│   └── Customer_Shopping_Behavior_Analysis.ipynb
+│
+├── sql_scripts/
+│   └── business_queries.sql
+│
+├── dashboard/
+│   └── customer_behavior_dashboard.pbix
+│
+├── report/
+│   ├── Customer_Shopping_Behavior_Analysis.pdf
+│   └── Business Problem Document.pdf
+│
+├── presentation/
+│   └── Customer_Behavior_Insights.pptx
 
-Derived purchase_frequency_days to measure buying habits
+<h2><a class="anchor" id="data-cleaning--preparation"></a>Data Cleaning & Preparation</h2>
 
-Dropped redundant features like promo_code_used
+Loaded dataset using pandas
 
-Ensured data integrity before database upload
+Checked structure with df.info() and summary with df.describe()
 
-3. SQL Analysis (PostgreSQL/MySQL)
+Renamed columns to snake_case for readability
 
-Performed advanced queries to extract actionable insights:
+Imputed missing values in review_rating using median per category
 
-Revenue by gender, age group, and subscription status
+Created new features:
 
-High-spending discount users
+age_group (binned ages)
 
-Top products by review rating
+purchase_frequency_days (time between purchases)
 
-Shipping type comparison (Standard vs. Express)
+Dropped redundant columns (promo_code_used)
 
-Loyalty segmentation: New, Returning, and Loyal customers
+Verified data consistency before exporting to SQL
 
-Discount dependency and product preference analysis
+<h2><a class="anchor" id="exploratory-data-analysis-eda"></a>Exploratory Data Analysis (EDA)</h2>
 
-4. Dashboard (Power BI)
+Key Observations:
 
-Built an interactive Power BI dashboard showing:
+Average Purchase Amount: ₹3,000–₹5,000 range
 
-Total revenue by demographics & category
+Majority purchases from female customers aged 25–35
 
-Purchase trends across seasons
+Subscribed users have 25% higher purchase frequency
 
-Discount and subscription impact
+Positive correlation between discount_applied and purchase volume
 
-Top 5 performing products
+Express shipping linked to higher-value transactions
 
-Customer segmentation visualizations
+Visuals Generated:
 
-5. Report & Presentation (Gamma)
+Category-wise revenue distribution
 
-Created a structured report summarizing key insights, recommendations, and trends.
+Gender vs. purchase amount
 
-Designed a presentation deck in Gamma to communicate findings clearly to stakeholders.
+Review ratings vs. discount usage
 
-📈 Key Insights & Recommendations
+Heatmap of feature correlations
 
-Promote Subscriptions: Subscribers spend more on average.
+<h2><a class="anchor" id="sql-analysis"></a>SQL Analysis</h2>
 
-Loyalty Programs: Reward repeat buyers to drive retention.
+Performed using PostgreSQL to derive structured business insights:
 
-Discount Strategy: Optimize discounts to protect profit margins.
+Query	Objective
+Revenue by Gender	Compare male vs. female contribution
+High-Spending Discount Users	Identify customers spending above average despite discounts
+Top 5 Products by Rating	Highlight products with best customer feedback
+Shipping Type Analysis	Compare average purchase by shipping mode
+Subscription Analysis	Compare spend between subscribers and non-subscribers
+Discount-Dependent Products	Find items most influenced by discounts
+Customer Segmentation	Classify into New, Returning, and Loyal segments
+Age Group Revenue	Measure total contribution by age bucket
+<h2><a class="anchor" id="dashboard"></a>Dashboard</h2>
 
-Product Positioning: Highlight top-rated products in campaigns.
+Built in Power BI to visualize:
 
-Targeted Marketing: Focus on high-value age groups and Express shipping users.
+Customer segmentation & retention trends
 
-🚀 How to Run
-1. Clone Repository
+Sales by demographics, category, and season
+
+Discount impact on revenue
+
+Product ratings and shipping insights
+
+<h2><a class="anchor" id="how-to-run-this-project"></a>How to Run This Project</h2>
+
+Clone the Repository
+
 git clone https://github.com/arnabkar07/customer-shopping-behavior.git
 cd customer-shopping-behavior
 
-2. Run Python Notebook
 
-Open the Jupyter Notebook:
+Install Dependencies
 
-jupyter notebook Customer_Shopping_Behavior_Analysis.ipynb
+pip install -r requirements.txt
 
-3. Configure SQL Database
 
-Create a new database in PostgreSQL/MySQL/SQL Server
+Run the Jupyter Notebook
 
-Run the SQL scripts in /sql_scripts folder
+jupyter notebook notebooks/Customer_Shopping_Behavior_Analysis.ipynb
 
-Update database credentials in the notebook before running SQL cells
 
-4. View Power BI Dashboard
+Connect to SQL Database
 
-Open the .pbix file in Power BI Desktop
+Create a PostgreSQL/MySQL DB
 
-Refresh data connection to your local database
+Run SQL scripts from /sql_scripts/
 
-5. View Final Report
+Update credentials in notebook before execution
 
-Open the Gamma link or PDF under /report
+View Dashboard
 
-📂 Project Structure
-├── data/
-│   └── customer_shopping_behavior.csv
-├── notebooks/
-│   └── Customer_Shopping_Behavior_Analysis.ipynb
-├── sql_scripts/
-│   └── business_queries.sql
-├── dashboard/
-│   └── customer_behavior_dashboard.pbix
-├── report/
-│   └── Customer_Shopping_Behavior_Analysis.pdf
-├── presentation/
-│   └── Customer_Behavior_Insights.pptx
-└── README.md
+Open Power BI file: dashboard/customer_behavior_dashboard.pbix
+
+Refresh dataset connection
+
+View Final Report
+
+Open PDF or Gamma presentation in /report/
+
+<h2><a class="anchor" id="business-insights--recommendations"></a>Business Insights & Recommendations</h2>
+
+Boost Subscriptions: Subscribers spend 25–30% more — incentivize sign-ups.
+
+Loyalty Programs: Reward repeat buyers to increase retention.
+
+Discount Optimization: Balance volume growth and profit margins.
+
+Product Positioning: Focus marketing on top-rated and top-selling categories.
+
+Target Marketing: Prioritize high-revenue demographics (25–35 age group).
+
+<h2><a class="anchor" id="author--contact"></a>Author & Contact</h2>
+
+Arnab Kar
+📧 Email: arnabk734@gmail.com
+
+🔗 LinkedIn
+
